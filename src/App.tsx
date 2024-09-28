@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import Counter from './components/02-contador-reduce';
-import AlumnoForm from './components/01-Form-normal';
-// import { TodoApp } from './components/ToDoList/TodoApp';
-import ToDo from './components/03-toDoList';
+import PersistentDrawerLeft from './components/PersistentDrawerLeft';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme';
 
 function App() {
   return (
-   <ToDo/>
+    <ThemeProvider theme={theme}>
+      <PersistentDrawerLeft />
+    </ThemeProvider>
   );
 }
 
