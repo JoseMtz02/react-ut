@@ -1,32 +1,31 @@
-import React, {useReducer} from 'react';
-import {Button, Typography, Box} from '@mui/material';
+import { useReducer } from "react";
 
 
 const initialState = {count: 0};
 
-function reducer(state: any, action: any){
+function reducer(state:any, action:any){
     switch(action.type){
         case 'increment':
             return {count: state.count + 1};
         case 'decrement':
             return {count: state.count -1};
+        case 'reset':
+            return initialState;
             default:
                 throw new Error();
     }
 }
 
-function Counter(){
+export default function Counter(){
+
     const [state, dispatch] = useReducer(reducer, initialState);
 
     return(
-        <Box display='flex' justifyContent='center' sx={{mb:4}}>
-        <Typography variant="h5" >Count: {state.count}</Typography>
-        <Button variant="text" onClick={() => dispatch({type:'decrement'})}>-</Button>
-        <Button variant="text" onClick={() => dispatch({type:'increment'})}>+</Button>
-
-
-        </Box>
-    );
+        <div>
+        <h1>Contador: {state.count} </h1>
+        <button onClick={()=> dispatch({type: 'increment'})}>Aumentar</button>
+        <button onClick={()=> dispatch({type: 'reset'})}>Resetear</button>
+        <button onClick={()=> dispatch({type: 'decrement'})}>Disminuir</button>
+        </div>
+    )
 }
-
-export default Counter;

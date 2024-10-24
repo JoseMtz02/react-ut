@@ -20,6 +20,8 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import Counter from './02-contador-reduce';
 import AlumnoForm from './01-Form-normal';
 import ToDo from './03-toDoList';
+import ItemList from './useCallback';
+import Estudiantes from './Estudiantes/Estudiantes';
 
 const drawerWidth = 240;
 
@@ -74,6 +76,12 @@ export default function PersistentDrawerLeft() {
       case 'ToDo':
         setSelectedComponent(<ToDo />);
         break;
+      case 'useCallback':
+      setSelectedComponent(<ItemList />);
+      break;
+      case 'Crud_Estudiantes':
+      setSelectedComponent(<Estudiantes />);
+      break;
       default:
         setSelectedComponent(null);
         break;
@@ -120,7 +128,7 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Counter', 'AlumnoForm', 'ToDo'].map((text) => (
+          {['Counter', 'AlumnoForm', 'ToDo', 'useCallback', 'Crud_Estudiantes'].map((text) => (
             <ListItem key={text} disablePadding>
               <ListItemButton onClick={() => handleComponentSelect(text)}>
                 <ListItemIcon>
